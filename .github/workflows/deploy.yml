@@ -1,0 +1,27 @@
+name: Deploy to Server contrateam
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v0.1.5
+        with:
+          host: 88.198.1.66
+          port: 22222
+          username: izgublje
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /home/izgublje/public_html/wp-content/plugins/dog-posts-creator 
+            git reset --hard
+            git pull origin main
+            # Restart services if needed
