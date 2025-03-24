@@ -298,17 +298,14 @@ class DogCreate {
             'Veličina' => $entry->meta_data['select-2']['value'],
             'Boja' => $entry->meta_data['select-3']['value'],
             'Čip' => $entry->meta_data['radio-2']['value'] != 'Ne znam' ? $entry->meta_data['radio-2']['value'] : 0,
-            'Datum' => sanitize_text_field($entry->meta_data['date-1']['value']),
-            'Lokacija' => sanitize_text_field($entry->meta_data['text-1']['value']),
-            'Email' => sanitize_text_field($entry->meta_data['email-1']['value']),
+            'Datum' => $entry->meta_data['date-1']['value'],
+            'Lokacija' => $entry->meta_data['text-1']['value'],
+            'Email' => $entry->meta_data['email-1']['value'],
         ];
 
         foreach ( $paragraphs as $key => $value ) {
-
             $slug = strtolower( iconv('UTF-8', 'ASCII//TRANSLIT', $key) ); // make slug ascii only
-            if ( ! empty($value) ) {
-                update_post_meta($post_id, $slug, $value);
-            } 
+            update_post_meta($post_id, $slug, sanitize_text_field($value)); // we want empty values to be saved as well
         }
 
         // We want to store entry_id in postmeta to know which entry is connected to which post
