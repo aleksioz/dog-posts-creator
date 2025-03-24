@@ -13,10 +13,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Define the plugin path
-define( 'YOUR_PLUGIN_NAME_PATH', plugin_dir_path( __FILE__ ) );
+define( 'DPC_PATH', plugin_dir_path( __FILE__ ) );
 
 // Include the required files
-require_once YOUR_PLUGIN_NAME_PATH . 'includes/class-init.php';
+require_once DPC_PATH . 'includes/class-init.php';
+
+use DogPostsCreator\Init;
 
 // Initialize the plugin
-add_action( 'plugins_loaded', ['Init', 'instance' ]);
+add_action( 'plugins_loaded', ['DogPostsCreator\Init', 'instance' ]);

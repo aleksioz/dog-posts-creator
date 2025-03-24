@@ -7,6 +7,12 @@
  * @package Dog posts creator
  */
 
+namespace DogPostsCreator;
+
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+
 class DogCreate {
 
     private $featured_image = null;
@@ -338,7 +344,7 @@ class DogCreate {
             )
         );
 
-        $query = new WP_Query( $query_args );
+        $query = new \WP_Query( $query_args );
 
         if ( $query->have_posts() ) {
             foreach ( $query->posts as $post_id ) {
