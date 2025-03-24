@@ -304,8 +304,11 @@ class DogCreate {
         ];
 
         foreach ( $paragraphs as $key => $value ) {
+
             $slug = strtolower( iconv('UTF-8', 'ASCII//TRANSLIT', $key) ); // make slug ascii only
-            update_post_meta($post_id, $slug, $value);
+            if ( ! empty($value) ) {
+                update_post_meta($post_id, $slug, $value);
+            } 
         }
 
         // We want to store entry_id in postmeta to know which entry is connected to which post
