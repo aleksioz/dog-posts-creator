@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Dog posts creator
  * Description: A plugin to handle creating "Dog" and editing posts based on Forminator form data.
- * Version: 1.0.2
+ * Version: 1.0.3
  * Author: aleksioz
  * https://github.com/aleksioz
  * License: GPL2
